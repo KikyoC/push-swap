@@ -6,7 +6,7 @@
 #    By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/17 09:40:08 by togauthi          #+#    #+#              #
-#    Updated: 2024/10/30 11:08:02 by togauthi         ###   ########.fr        #
+#    Updated: 2024/11/01 11:56:24 by togauthi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,22 +25,25 @@ OBJS = ${SRCS:.c=.o}
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra -I../includes
+CFLAGS = -Wall -Werror -Wextra -g
 
-all: $(NAME)
+all: $(NAME) move
 
 .c.o:
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-		ar -rc $(NAME) $^
-		
+		@ar -rc $(NAME) $^
+
+move:
+	@mv $(OBJS) ../objects
+
 clean:
-		rm -f $(OBJS);
+		@rm -f $(OBJS);
 
 fclean: clean
-		rm -f $(NAME);
+		@rm -f $(NAME);
 
 re: clean all
 
-.PHONY: all clean re fclean
+.PHONY: all clean re fclean move
