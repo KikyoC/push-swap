@@ -6,7 +6,7 @@
 #    By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/30 11:06:49 by togauthi          #+#    #+#              #
-#    Updated: 2024/10/30 11:26:40 by togauthi         ###   ########.fr        #
+#    Updated: 2024/11/01 11:53:24 by togauthi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,21 +14,58 @@ NAME = a.out
 
 PRINTF = libftprintf.a
 LIBFT = libft.a
+CFLAGS = -Wall -Werror -Wextra -g
+SRCS = push_swap.c \
+	utils/arg.c \
+	utils/stack.c
 
-all: $(PRINTF) $(LIBFT)
+GREEN = \e[0;32m
+WHITE = \e[0;37m
+AQUA = \e[0;36m
+YELLOW = \e[0;33m
+
+OBJS = $(SRCS:.c=.o)
+
+all: $(NAME) move
 
 $(PRINTF):
-	make -C printf
-	mv printf/libftprintf.a ./
+	@echo "$(YELLOW)Compiling printf... $(WHITE)[$(GREEN)1$(WHITE)/$(AQUA)3$(WHITE)]" 
+	@make --no-print-directory -C printf
+	@mv printf/libftprintf.a ./
 
 $(LIBFT):
-	make -C libft
-	mv libft/libft.a ./
+	@echo "$(YELLOW)Compiling libft... $(WHITE)[$(GREEN)2$(WHITE)/$(AQUA)3$(WHITE)]" 
+	@make --no-print-directory -C libft
+	@mv libft/libft.a ./
+
+$(NAME): $(PRINTF) $(LIBFT) $(OBJS)
+	@echo "$(YELLOW)Compiling push_swap... $(WHITE)[$(GREEN)3$(WHITE)/$(AQUA)3$(WHITE)]"
+	@cc $(CFLAGS) -o $@ $(OBJS) $(PRINTF) $(LIBFT)
+	@echo "$(GREEN)Done."
+%.o: %.c
+	@cc $(CFLAGS) -c $< -o $@
+
+move:
+	@mv $(OBJS) objects
 
 clean:
-	make -C printf clean
-	make -C libft clean
-	rm -f $(PRINTF) $(LIBFT)
+	@echo "$(YELLOW)Clearing printf... $(WHITE)[$(GREEN)1$(WHITE)/$(AQUA)3$(WHITE)]"
+	@make --no-print-directory -C printf clean
+	@echo "$(YELLOW)Clearing libft... $(WHITE)[$(GREEN)2$(WHITE)/$(AQUA)3$(WHITE)]"
+	@make --no-print-directory -C libft clean
+	@echo "$(YELLOW)Clearing objects... $(WHITE)[$(GREEN)3$(WHITE)/$(AQUA)3$(WHITE)]"
+	@rm -f $(OBJS)
+	@echo "$(GREEN)Done."
 
+fclean: clean
+	@echo "$(YELLOW)Clearing objects... $(WHITE)[$(GREEN)1$(WHITE)/$(AQUA)3$(WHITE)]"
+	@rm -f $(OBJS)
+	@echo "$(YELLOW)Clearing libraries...$(WHITE)[$(GREEN)2$(WHITE)/$(AQUA)3$(WHITE)]"
+	@rm -f $(LIBFT) $(PRINTF)
+	@echo "$(YELLOW)Clearing result...$(WHITE)[$(GREEN)3$(WHITE)/$(AQUA)3$(WHITE)]"
+	@rm -f $(name)
+	@echo "$(GREEN)Done."
 
-.PHONY: all clean
+re: fclean all
+
+.PHONY: all clean fclean re move
