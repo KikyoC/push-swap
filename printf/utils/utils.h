@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 14:33:10 by togauthi          #+#    #+#             */
-/*   Updated: 2024/10/23 10:50:11 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/10/30 13:22:58 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define UTILS_H
 # include <unistd.h>
 
-int		ft_strlen(const char *str);
+int		ft_printf_strlen(const char *c);
 int		ft_putstr(const char *c);
 int		ft_putchar(char c);
 int		ft_putnbr_base(int n, char *base);

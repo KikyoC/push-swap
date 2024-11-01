@@ -6,11 +6,11 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 15:30:12 by togauthi          #+#    #+#             */
-/*   Updated: 2024/10/22 15:08:39 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/10/30 13:23:07 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(const char *str)
+int	ft_printf_strlen(const char *str)
 {
 	int	i;
 
