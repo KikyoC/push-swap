@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:08:26 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/04 13:58:50 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/04 15:45:18 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,8 @@ int	main(int argc, char **argv)
 		free_stack(stack);
 		return (1);
 	}
-	stack_2->top = NULL;
-	reverse_rotate(stack);
-	rotate(stack);
-	print_stack(stack);
-	printf("Heheheha\n");
-	print_stack(stack_2);
+	sort(stack, stack_2);
+	
 	free_stack(stack);
 	free_stack(stack_2);
 }

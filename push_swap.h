@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:09:04 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/04 13:44:40 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/04 15:36:42 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,8 @@ void		rotate(t_stack *stack);
 t_element	*element_copy(t_element *element);
 size_t		stack_len(t_stack *stack);
 t_element	*stack_last(t_stack *stack);
+int			is_sorted(t_stack *stack);
 void		reverse_rotate(t_stack *stack);
+void		sort(t_stack *main, t_stack *tmp);
+
 #endif

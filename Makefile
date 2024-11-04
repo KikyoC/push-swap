@@ -6,7 +6,7 @@
 #    By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/30 11:06:49 by togauthi          #+#    #+#              #
-#    Updated: 2024/11/04 14:39:12 by togauthi         ###   ########.fr        #
+#    Updated: 2024/11/04 15:48:00 by togauthi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,8 @@ SRCS = push_swap.c \
 	utils/print.c \
 	utils/rotate.c \
 	utils/reverse_rotate.c \
+	utils/sort.c \
+	src/index.c \
 
 GREEN = \e[0;32m
 WHITE = \e[0;37m
@@ -46,7 +48,7 @@ $(LIBFT):
 $(NAME): $(PRINTF) $(LIBFT) $(OBJS)
 	@echo "$(YELLOW)Compiling push_swap... $(WHITE)[$(GREEN)3$(WHITE)/$(AQUA)3$(WHITE)]"
 	@cc $(CFLAGS) -o $@ $(OBJS) $(PRINTF) $(LIBFT)
-	@echo "$(GREEN)Done."
+	@echo "$(GREEN)Done.${WHITE}"
 %.o: %.c
 	@cc $(CFLAGS) -c $< -o $@
 
