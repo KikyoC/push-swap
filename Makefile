@@ -6,7 +6,7 @@
 #    By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/30 11:06:49 by togauthi          #+#    #+#              #
-#    Updated: 2024/11/04 13:35:34 by togauthi         ###   ########.fr        #
+#    Updated: 2024/11/04 14:12:22 by togauthi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,7 @@ clean:
 
 fclean: clean
 	@echo "$(YELLOW)Clearing result...$(WHITE)[$(GREEN)1$(WHITE)/$(AQUA)1$(WHITE)]"
-	@rm -f $(name)
+	@rm -f $(NAME)
 	@echo "$(GREEN)Done."
 
 re: fclean all
