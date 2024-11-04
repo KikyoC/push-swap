@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:09:04 by togauthi          #+#    #+#             */
-/*   Updated: 2024/10/31 10:57:49 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:44:40 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,15 @@ typedef struct s_stack
 	t_element	*top;
 }	t_stack;
 
-int		check_args(int argc, char **argv);
-void	put_stack_end(t_stack *stack, t_element *element);
-void	free_stack(t_stack *stack);
-
+int			check_args(int argc, char **argv);
+void		put_stack_end(t_stack *stack, t_element *element);
+void		free_stack(t_stack *stack);
+void		print_stack(t_stack *stack);
+void		swap(t_stack *stack);
+void		push(t_stack *original, t_stack *to_push);
+void		rotate(t_stack *stack);
+t_element	*element_copy(t_element *element);
+size_t		stack_len(t_stack *stack);
+t_element	*stack_last(t_stack *stack);
+void		reverse_rotate(t_stack *stack);
 #endif

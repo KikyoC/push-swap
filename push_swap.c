@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:08:26 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/01 12:06:02 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:58:50 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ t_stack *create_stack(int argc, char **args)
 	int			i;
 	
 	res = ft_calloc(sizeof(t_stack), 1);
+	if (!res)
+		return (NULL);
 	i = 1;
 	while (i < argc)
 	{
@@ -27,7 +29,7 @@ t_stack *create_stack(int argc, char **args)
 		if (!element)
 		{
 			free_stack(res);
-			exit(1);
+			return (NULL);
 		}
 		element->nbr = ft_atoi(args[i]);
 		element->prev = NULL;
@@ -41,9 +43,25 @@ t_stack *create_stack(int argc, char **args)
 int	main(int argc, char **argv)
 {
 	t_stack	*stack;
+	t_stack	*stack_2;
 	
 	if (!check_args(argc, argv))
 		return (1);
 	stack = create_stack(argc, argv);
+	if (!stack)
+		return (1);
+	stack_2 = ft_calloc(sizeof(t_stack), 1);
+	if (!stack_2)
+	{
+		free_stack(stack);
+		return (1);
+	}
+	stack_2->top = NULL;
+	reverse_rotate(stack);
+	rotate(stack);
+	print_stack(stack);
+	printf("Heheheha\n");
+	print_stack(stack_2);
 	free_stack(stack);
+	free_stack(stack_2);
 }
