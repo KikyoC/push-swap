@@ -6,7 +6,7 @@
 #    By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/30 11:06:49 by togauthi          #+#    #+#              #
-#    Updated: 2024/11/01 11:53:24 by togauthi         ###   ########.fr        #
+#    Updated: 2024/11/04 12:49:38 by togauthi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,18 +51,16 @@ move:
 clean:
 	@echo "$(YELLOW)Clearing printf... $(WHITE)[$(GREEN)1$(WHITE)/$(AQUA)3$(WHITE)]"
 	@make --no-print-directory -C printf clean
+	@rm -f $(PRINTF)
 	@echo "$(YELLOW)Clearing libft... $(WHITE)[$(GREEN)2$(WHITE)/$(AQUA)3$(WHITE)]"
 	@make --no-print-directory -C libft clean
+	@rm -f $(LIBFT)
 	@echo "$(YELLOW)Clearing objects... $(WHITE)[$(GREEN)3$(WHITE)/$(AQUA)3$(WHITE)]"
 	@rm -f $(OBJS)
 	@echo "$(GREEN)Done."
 
 fclean: clean
-	@echo "$(YELLOW)Clearing objects... $(WHITE)[$(GREEN)1$(WHITE)/$(AQUA)3$(WHITE)]"
-	@rm -f $(OBJS)
-	@echo "$(YELLOW)Clearing libraries...$(WHITE)[$(GREEN)2$(WHITE)/$(AQUA)3$(WHITE)]"
-	@rm -f $(LIBFT) $(PRINTF)
-	@echo "$(YELLOW)Clearing result...$(WHITE)[$(GREEN)3$(WHITE)/$(AQUA)3$(WHITE)]"
+	@echo "$(YELLOW)Clearing result...$(WHITE)[$(GREEN)1$(WHITE)/$(AQUA)1$(WHITE)]"
 	@rm -f $(name)
 	@echo "$(GREEN)Done."
 
