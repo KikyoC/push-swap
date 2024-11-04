@@ -6,7 +6,7 @@
 #    By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/30 11:06:49 by togauthi          #+#    #+#              #
-#    Updated: 2024/11/04 14:12:22 by togauthi         ###   ########.fr        #
+#    Updated: 2024/11/04 14:39:12 by togauthi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ YELLOW = \e[0;33m
 
 OBJS = $(SRCS:.c=.o)
 
-all: $(NAME) move
+all: $(NAME)
 
 $(PRINTF):
 	@echo "$(YELLOW)Compiling printf... $(WHITE)[$(GREEN)1$(WHITE)/$(AQUA)3$(WHITE)]" 
@@ -49,9 +49,6 @@ $(NAME): $(PRINTF) $(LIBFT) $(OBJS)
 	@echo "$(GREEN)Done."
 %.o: %.c
 	@cc $(CFLAGS) -c $< -o $@
-
-move:
-	@mv $(OBJS) objects
 
 clean:
 	@echo "$(YELLOW)Clearing printf... $(WHITE)[$(GREEN)1$(WHITE)/$(AQUA)3$(WHITE)]"
@@ -71,4 +68,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re move
+.PHONY: all clean fclean re

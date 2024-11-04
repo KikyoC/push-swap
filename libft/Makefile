@@ -6,7 +6,7 @@
 #    By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/15 09:19:46 by togauthi          #+#    #+#              #
-#    Updated: 2024/11/01 11:56:18 by togauthi         ###   ########.fr        #
+#    Updated: 2024/11/04 14:38:55 by togauthi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,13 +63,10 @@ CC = cc
 
 CFLAGS = -Wall -Werror -Wextra -g
 
-all: $(NAME) move
+all: $(NAME)
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
-
-move:
-	@mv $(OBJS) ../objects
 
 $(NAME): $(OBJS)
 	@ar -rc $(NAME) $^
@@ -85,4 +82,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re move
+.PHONY: all bonus clean fclean re
