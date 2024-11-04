@@ -6,7 +6,7 @@
 #    By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/30 11:06:49 by togauthi          #+#    #+#              #
-#    Updated: 2024/11/04 12:49:38 by togauthi         ###   ########.fr        #
+#    Updated: 2024/11/04 12:52:06 by togauthi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,10 @@ LIBFT = libft.a
 CFLAGS = -Wall -Werror -Wextra -g
 SRCS = push_swap.c \
 	utils/arg.c \
-	utils/stack.c
+	utils/stack.c \
+	utils/push.c \
+	utils/swap.c \
+	utils/print.c
 
 GREEN = \e[0;32m
 WHITE = \e[0;37m
