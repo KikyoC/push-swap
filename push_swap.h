@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:09:04 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/04 15:36:42 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/07 10:40:10 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 typedef struct s_element
 {
 	int					nbr;
+	int					index;
 	struct s_element	*next;
 	struct s_element	*prev;
 }	t_element;

@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:08:26 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/04 15:45:18 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/07 15:03:42 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,23 @@ t_stack *create_stack(int argc, char **args)
 		element->nbr = ft_atoi(args[i]);
 		element->prev = NULL;
 		element->next = NULL;
+		element->index = 0;
 		put_stack_end(res, element);
 		i++;
 	}
 	return res;
+}
+
+void print_index(t_stack *stack)
+{
+	t_element	*current;
+
+	current = stack->top;
+	while (current)
+	{
+		printf("Number:%d --> %d\n", current->nbr, current->index);
+		current = current->next;
+	}
 }
 
 int	main(int argc, char **argv)
@@ -57,7 +70,12 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	sort(stack, stack_2);
-	
+	// printf("%d\n", stack_last(stack)->nbr);
+	// print_stack(stack);
+	// rotate(stack);
+	// printf("\n");
+	// print_stack(stack);
+	//print_index(stack);
 	free_stack(stack);
 	free_stack(stack_2);
 }
