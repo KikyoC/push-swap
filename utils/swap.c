@@ -6,13 +6,13 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:07:54 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/04 11:39:39 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/11 16:02:21 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	swap(t_stack *stack)
+void	swap(t_stack *stack, char *to_print)
 {
 	t_element	*tmp;
 	t_element	*tmp_2;
@@ -26,4 +26,6 @@ void	swap(t_stack *stack)
 	tmp_2->prev = tmp->prev;
 	tmp->prev = tmp_2;
 	stack->top = tmp_2;
+	if (to_print)
+		ft_printf("%s\n", to_print);
 }

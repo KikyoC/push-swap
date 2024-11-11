@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:29:07 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/04 13:07:28 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/11 16:14:06 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ t_element	*element_copy(t_element *element)
 	return (res);
 }
 
-size_t	stack_len(t_stack *stack)
+int	stack_len(t_stack *stack)
 {
 	t_element	*current;
-	size_t		i;
+	int		i;
 	
 	current = stack->top;
 	i = 0;
@@ -88,4 +88,21 @@ t_element	*stack_last(t_stack *stack)
 	while (current->next)
 		current = current->next;
 	return (current);
+}
+
+int current_rank(t_stack *stack, int index)
+{
+	t_element	*current;
+	int			i;
+	
+	i = 0;
+	current = stack->top;
+	while (current)
+	{
+		if (current->index == index)
+			return (i);
+		current = current->next;
+		i++;
+	}
+	return (-1);
 }

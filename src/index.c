@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 10:56:50 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/07 16:43:22 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/08 15:32:52 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,23 @@ void	set_index(t_stack *stack, int size)
 	}
 }
 
-void	separate(t_stack *main, t_stack *tmp, int main_size)
+int bigger(t_stack *main)
+{
+	int			res;
+	t_element	*current;
+
+	res = INT_MIN;
+	current = main->top;
+	while (current)
+	{
+		if (current->index > res)
+			res = current->index;
+		current = current->next;
+	}
+	return (res);
+}
+
+void	separate(t_stack *main, t_stack *tmp, int main_size, int bigger)
 {
 	int	current_len;
 	int	i;
@@ -50,7 +66,7 @@ void	separate(t_stack *main, t_stack *tmp, int main_size)
 	current_len = 0;
 	while (main_size > 6 && i < main_size && current_len < (main_size / 2))
 	{
-		if (main->top->index <= main_size / 2)
+		if (main->top->index < main_size / 2)
 		{
 			push(main, tmp);
 			current_len++;
@@ -66,9 +82,17 @@ void	separate(t_stack *main, t_stack *tmp, int main_size)
 	main_size = stack_len(main);
 	while (main_size > 3)
 	{
-		push(main, tmp);
-		printf("pb\n");
-		main_size --;		
+		if (main->top->index >= bigger)
+		{
+			rotate(main);
+			printf("ra\n");
+		}
+		else
+		{
+			push(main, tmp);
+			printf("pb\n");
+			main_size --;
+		}
 	}
 }
 
@@ -104,34 +128,39 @@ void	little_sort(t_stack *main)
 	}
 }
 
-void	back(t_stack *main, t_stack *tmp)
+void	back(t_stack *main, t_stack *tmp, int bigger)
 {
+	(void)bigger;
 	while (tmp->top)
 	{
 		push(tmp, main);
-		printf("pa\n");	
-		if (main->top->index + 1 != main->top->next->index)
+		printf("pa\n");
+		while (tmp->top && tmp->top->index > main->top->index)
 		{
 			rotate(main);
 			printf("ra\n");
 		}
-		else
+		while (current_rank(main, main->top->index - 1) > current_rank(main, bigger))
 		{
-			while (stack_last(main)->index + 1 == main->top->index)
+			reverse_rotate(main);
+			printf("rra\n");
+			if (main->top->index + 1 != main->top->next->index)
 			{
-				reverse_rotate(main);
-				printf("rra\n");
+				push(main, tmp);
+				printf("pb\n");
 			}
-			
 		}
 	}
 }
 
 void	sort(t_stack *main, t_stack *tmp)
 {
+	int	big;
+	
 	set_index(main, stack_len(main));
-	// separate(main, tmp, stack_len(main));
+	big = bigger(main);
+	separate(main, tmp, stack_len(main), big - 2);
 	(void)tmp;
 	little_sort(main);
-	// back(main, tmp);
+	back(main, tmp, big - 2);
 }

@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:09:04 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/07 10:40:10 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/11 16:14:21 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,15 @@ int			check_args(int argc, char **argv);
 void		put_stack_end(t_stack *stack, t_element *element);
 void		free_stack(t_stack *stack);
 void		print_stack(t_stack *stack);
-void		swap(t_stack *stack);
-void		push(t_stack *original, t_stack *to_push);
-void		rotate(t_stack *stack);
+void		swap(t_stack *stack, char *to_print);
+void		push(t_stack *original, t_stack *to_push, char *to_print);
+void		rotate(t_stack *stack, char *to_print);
 t_element	*element_copy(t_element *element);
-size_t		stack_len(t_stack *stack);
+int			stack_len(t_stack *stack);
 t_element	*stack_last(t_stack *stack);
 int			is_sorted(t_stack *stack);
-void		reverse_rotate(t_stack *stack);
+void		reverse_rotate(t_stack *stack, char *to_print);
 void		sort(t_stack *main, t_stack *tmp);
-
+int			current_rank(t_stack *stack, int i);
+int			what_to_do(t_stack *main, t_stack *tmp);
 #endif

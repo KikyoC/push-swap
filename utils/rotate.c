@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:56:34 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/07 14:53:49 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/11 16:02:08 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 
 
-void	rotate(t_stack *stack)
+void	rotate(t_stack *stack, char *to_print)
 {
 	t_element	*top;
 	t_element	*last;
@@ -27,4 +27,6 @@ void	rotate(t_stack *stack)
 	last->next = top;
 	top->prev = last;
 	top->next = NULL;
+	if (to_print)
+		ft_printf("%s\n", to_print);
 }
