@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:22:48 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/11 16:01:51 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/12 13:41:01 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,21 @@
 
 void	push(t_stack *original, t_stack *to_push, char *to_print)
 {
-	t_element	*top;
-	t_element	*next;
-	
-	if (stack_len(original) < 1)
+	t_element	*element;
+
+	element = original->top;
+	if (!element)
 		return ;
-	top = original->top;
-	original->top = original->top->next;
-	next = to_push->top;
-	top->prev = NULL;
-	top->next = next;
-	to_push->top = top;
+	original->top = element->next;
+	element->prev = NULL;
+	element->next = to_push->top;
+	if (!to_push->top)
+		to_push->top = element;
+	else
+	{
+		to_push->top->prev = element;
+		to_push->top = element;
+	}
 	if (to_print)
 		ft_printf("%s\n", to_print);
 }
