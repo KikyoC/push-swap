@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 15:41:24 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/13 10:51:35 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/13 16:24:31 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,58 +72,37 @@ int lower(t_stack *stack)
 	}
 	return (low);
 }
-int	what_to_do(t_stack *main, t_stack *tmp)
+int	cheapest(t_stack *main, t_stack *tmp, int stop)
 {
-	t_element	*current;
-	int			big;
-	int			low;
-	int 		moves;
-
-	big = bigger(tmp);
-	low = lower(tmp);
-	moves = 0;
-	current = tmp->top;
-	if (main->top->nbr > big)
+	int	w1;
+	int	w2;
+	int w3;
+	
+	w1 = what_to_do(main, tmp);
+	swap(main, NULL);
+	w2 = what_to_do(main, tmp);
+	swap(main, NULL);
+	reverse_rotate(main, NULL);
+	w3 = what_to_do(main, tmp);
+	rotate(main, NULL);
+	//ft_printf("%d %d %d\n", w1, w2 + 1, w3 + 1);
+	if (w3 + 1 < w2 && w3 + 1 < w1 && stack_last(main)->nbr != stop)
 	{
-		while (current->nbr != big)
-		{
-			current = current->next;
-			moves ++;
-		}
-		return (moves);
+		//ft_printf("w3\n");
+		reverse_rotate(main, "rra");
+		return (w3);
 	}
-	if (main->top->nbr < low)
+	if (w2 + 1 < w3 && w2 + 1 < w1 && main->top->next->nbr != stop)
 	{
-		while (current->nbr != big)
-		{
-			current = current->next;
-			moves ++;
-		}
-		return (moves);
+		//ft_printf("w3\n");
+		swap(main, "sa");
+		return (w2);
 	}
-	while (current->nbr > main->top->nbr)
-	{
-		current = current->next;
-		moves++;
-		if (!current)
-			return (0);
-	}
-	if (moves == 0)
-	{
-		current = stack_last(tmp);
-		moves = stack_len(tmp);
-		while (current->nbr < main->top->nbr)
-		{
-			if (!current)
-				return (0);
-			current = current->prev;
-			moves --;
-		}
-	}
-	if (moves > stack_len(tmp) / 2)
-		return (moves - stack_len(tmp));
-	return (moves);
+	//ft_printf("w1\n");
+	// (void)stop;
+	return (w1);
 }
+
 void	push_tmp(t_stack *main, t_stack *tmp, int stop)
 {
 	int	big;
@@ -132,14 +111,16 @@ void	push_tmp(t_stack *main, t_stack *tmp, int stop)
 	
 	big = bigger(tmp);
 	low = lower(tmp);
-	while (main->top->next && !is_sorted(main))
+	while (main->top->next)
 	{
 		if (main->top->nbr == stop)
 		{
 			rotate(main, "ra");
 			continue ;
 		}
-		to_do = what_to_do(main, tmp);
+		to_do = cheapest(main, tmp, stop);
+		if (to_do > stack_len(tmp) / 2)
+			to_do = to_do - stack_len(tmp);
 		rotate_many(tmp, "rb", to_do);
 		reverse_rotate_many(tmp, "rrb", to_do);
 		push(main, tmp, "pb");
@@ -152,7 +133,7 @@ void	good_sort(t_stack *stack)
 	int	big;
 
 	big = bigger(stack);
-	if (current_rank(stack, big) < stack_len(stack) / 2)
+	if (current_rank(stack, big) > stack_len(stack) / 2)
 	{
 		while (stack->top->nbr != big)
 			reverse_rotate(stack, "rrb");
@@ -180,5 +161,4 @@ void	sort(t_stack *main, t_stack *tmp)
 	good_sort(tmp);
 	while (tmp->top)
 		push(tmp, main, "pa");
-
 }
