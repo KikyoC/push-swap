@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:56:34 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/11 16:02:08 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/13 10:44:35 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,13 @@ void	rotate(t_stack *stack, char *to_print)
 	top->next = NULL;
 	if (to_print)
 		ft_printf("%s\n", to_print);
+}
+
+void	rotate_many(t_stack *stack, char *to_print, int times)
+{
+	while (times > 0)
+	{
+		rotate(stack, to_print);
+		times --;
+	}
 }

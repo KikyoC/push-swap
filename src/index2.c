@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 15:41:24 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/12 17:13:04 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/13 10:51:35 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,8 @@ int	what_to_do(t_stack *main, t_stack *tmp)
 			moves --;
 		}
 	}
-	// ft_printf("end of function\n");
+	if (moves > stack_len(tmp) / 2)
+		return (moves - stack_len(tmp));
 	return (moves);
 }
 void	push_tmp(t_stack *main, t_stack *tmp, int stop)
@@ -131,7 +132,7 @@ void	push_tmp(t_stack *main, t_stack *tmp, int stop)
 	
 	big = bigger(tmp);
 	low = lower(tmp);
-	while (main->top->next)
+	while (main->top->next && !is_sorted(main))
 	{
 		if (main->top->nbr == stop)
 		{
@@ -139,12 +140,8 @@ void	push_tmp(t_stack *main, t_stack *tmp, int stop)
 			continue ;
 		}
 		to_do = what_to_do(main, tmp);
-		// ft_printf("**%d**\n", to_do);
-		while (to_do > 0)
-		{
-			rotate(tmp, "rb");
-			to_do --;
-		}
+		rotate_many(tmp, "rb", to_do);
+		reverse_rotate_many(tmp, "rrb", to_do);
 		push(main, tmp, "pb");
 		if (tmp->top->nbr == lower(tmp))
 			rotate(tmp, "rb");
