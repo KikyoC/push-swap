@@ -1,16 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   index.c                                            :+:      :+:    :+:   */
+/*   index3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tom <tom@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 23:13:46 by tom               #+#    #+#             */
-/*   Updated: 2024/11/13 23:53:02 by tom              ###   ########.fr       */
+/*   Created: 2024/11/13 15:27:41 by togauthi          #+#    #+#             */
+/*   Updated: 2024/11/14 11:03:08 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+void	set_index(t_stack *stack, int size)
+{
+	t_element	*current;
+	t_element	*hight;
+	int 		last;
+	
+	while (--size)
+	{
+		current = stack->top;
+		last = -2147483648;
+		while (current)
+		{
+			if (current->nbr == -2147483648 && !current->index)
+				current->index = 1;
+			if (current->nbr > last && !current->index)
+			{
+				last = current->nbr;
+				hight = current;
+				current = stack->top;
+			}
+			else
+				current = current->next;
+		}
+		if (hight)
+			hight->index = size;
+	}
+}
+
+int	ft_power(int nb, int power)
+{
+	if (power < 0)
+		return (0);
+	if (power == 0)
+		return (1);
+	else
+		return (nb * ft_power(nb, power - 1));
+}
 
 int	how_many_bytes(int i)
 {
@@ -45,55 +83,51 @@ int	give_max_byte(t_stack *stack)
 	}
 	return(max);
 }
-void	sort_tmp(t_stack *main, t_stack *tmp, int bit, int rank)
+
+void	radix_tmp_sort(t_stack *main, t_stack *tmp, int bits, int actual)
 {
-	int size;
-	
+	int	size;
+
 	size = stack_len(tmp);
-	
-	while (size-- && rank < bit)
+	while (size-- && actual <= bits && !is_sorted(main))
 	{
-		if (((tmp->top->nbr >> rank) & 1) == 0)
-			rotate(tmp, "rb");
-		else
+		if (tmp->top->index >> actual & 1)
 			push(tmp, main, "pa");
+		else
+			rotate(tmp, "rb");
 	}
 	if (is_sorted(main))
-	{
 		while (tmp->top)
 			push(tmp, main, "pa");
-	}
 }
 
-void	radix_sort(t_stack *main, t_stack *tmp)
+void	radix(t_stack *main, t_stack *tmp)
 {
-    int	j;
-    int	bit;
-    int	size;
-
-    j = -1;
-	bit = 0;
-	size = stack_len(main);
-	while (size > 1 && ++bit)
-		size /= 2;
-    while (++j <= bit)
-    {
-		size = stack_len(main);
-		while (size-- && !is_sorted(main))
+	int			bits;
+	int			actual;
+	int			i;
+	
+	bits = give_max_byte(main);
+	actual = 0;
+	while (actual <= bits)
+	{
+		i = stack_len(main);
+		while (i-- && !is_sorted(main))
 		{
-			if (((main->top->nbr >> j) & 1) == 0)
-				push(main, tmp, "pb");
-			else
+			if (main->top->index >> actual & 1)
 				rotate(main, "ra");
+			else
+				push(main, tmp, "pb");
 		}
-		sort_tmp(main, tmp, bit, j);
-    }
-	while (tmp->top)
-		push(tmp, main, "pa");
+		radix_tmp_sort(main, tmp, bits, actual + 1);
+		actual ++;
+	}
 }
 
 
 void	sort(t_stack *main, t_stack *tmp)
 {
-	radix_sort(main, tmp);
+	set_index(main, stack_len(main));
+	(void)tmp;
+	radix(main, tmp);
 }

@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:09:04 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/13 16:24:41 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/14 11:04:09 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int			is_sorted(t_stack *stack);
 void		reverse_rotate(t_stack *stack, char *to_print);
 void		sort(t_stack *main, t_stack *tmp);
 int			current_rank(t_stack *stack, int i);
-int			what_to_do(t_stack *main, t_stack *tmp);
 void		set_index(t_stack *stack, int size);
 void		rotate_many(t_stack *stack, char *to_print, int times);
 void		reverse_rotate_many(t_stack *stack, char *to_print, int times);

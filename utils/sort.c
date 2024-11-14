@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:56:01 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/04 15:32:16 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/14 10:43:13 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	is_sorted(t_stack *stack)
 			current = current->next;
 			continue ;
 		}
-		else if (current->prev->nbr > current->nbr)
+		else if (current->prev->index > current->index)
 			return (0);
 		current = current->next;
 	}
