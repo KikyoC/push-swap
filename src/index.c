@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   index3.c                                           :+:      :+:    :+:   */
+/*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:27:41 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/14 11:03:08 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/14 11:20:36 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	set_index(t_stack *stack, int size)
 {
 	t_element	*current;
 	t_element	*hight;
-	int 		last;
-	
+	int			last;
+
 	while (--size)
 	{
 		current = stack->top;
@@ -38,50 +38,6 @@ void	set_index(t_stack *stack, int size)
 		if (hight)
 			hight->index = size;
 	}
-}
-
-int	ft_power(int nb, int power)
-{
-	if (power < 0)
-		return (0);
-	if (power == 0)
-		return (1);
-	else
-		return (nb * ft_power(nb, power - 1));
-}
-
-int	how_many_bytes(int i)
-{
-	int	res;
-	int power;
-	
-	power = 1;
-	res = 1;
-	while (i > power)
-	{
-		power *= 2;
-		res++;
-	}
-	if (res - 1 <= 0)
-		return (1); 
-	return (res - 1);
-}
-
-
-int	give_max_byte(t_stack *stack)
-{
-	t_element	*current;
-	int			max;
-
-	current = stack->top;
-	max = 0;
-	while (current)
-	{
-		if (how_many_bytes(current->index) > max)
-			max = how_many_bytes(current->index);
-		current = current->next;
-	}
-	return(max);
 }
 
 void	radix_tmp_sort(t_stack *main, t_stack *tmp, int bits, int actual)
@@ -106,7 +62,7 @@ void	radix(t_stack *main, t_stack *tmp)
 	int			bits;
 	int			actual;
 	int			i;
-	
+
 	bits = give_max_byte(main);
 	actual = 0;
 	while (actual <= bits)
@@ -124,10 +80,8 @@ void	radix(t_stack *main, t_stack *tmp)
 	}
 }
 
-
 void	sort(t_stack *main, t_stack *tmp)
 {
 	set_index(main, stack_len(main));
-	(void)tmp;
 	radix(main, tmp);
 }

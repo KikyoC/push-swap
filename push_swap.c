@@ -6,19 +6,18 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:08:26 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/13 16:26:39 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/14 11:19:02 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-t_stack *create_stack(int argc, char **args)
+t_stack	*create_stack(int argc, char **args)
 {
 	t_stack		*res;
 	t_element	*element;
 	int			i;
-	
+
 	res = ft_calloc(sizeof(t_stack), 1);
 	if (!res)
 		return (NULL);
@@ -38,26 +37,14 @@ t_stack *create_stack(int argc, char **args)
 		put_stack_end(res, element);
 		i++;
 	}
-	return res;
-}
-
-void print_reverse(t_stack *stack)
-{
-	t_element	*current;
-
-	current = stack_last(stack);
-	while (current)
-	{
-		printf("Number:%d --> %d\n", current->nbr, current->index);
-		current = current->prev;
-	}
+	return (res);
 }
 
 int	main(int argc, char **argv)
 {
 	t_stack	*stack;
 	t_stack	*stack_2;
-	
+
 	if (!check_args(argc, argv))
 		return (1);
 	stack = create_stack(argc, argv);
@@ -70,18 +57,6 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	sort(stack, stack_2);
-	// set_index(stack, stack_len(stack));
-	// push(stack, stack_2, "pb");
-	// push(stack, stack_2, "pb");
-	// push(stack, stack_2, "pb");
-	// rotate(stack_2, "rb");
-	// push(stack, stack_2, "pb");
-	// reverse_rotate(stack_2, "rrb");
-	// reverse_rotate(stack_2, "rrb");
-	// reverse_rotate(stack_2, "rrb");
-	// print_reverse(stack_2);
-	// stack_len(stack_2);
 	free_stack(stack);
 	free_stack(stack_2);
-	
 }

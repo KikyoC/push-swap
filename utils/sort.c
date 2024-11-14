@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:56:01 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/14 10:43:13 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/14 11:21:30 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	is_sorted(t_stack *stack)
 {
 	t_element	*current;
-	
+
 	current = stack->top;
 	while (current)
 	{

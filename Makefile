@@ -6,7 +6,7 @@
 #    By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/30 11:06:49 by togauthi          #+#    #+#              #
-#    Updated: 2024/11/14 11:03:30 by togauthi         ###   ########.fr        #
+#    Updated: 2024/11/14 11:16:23 by togauthi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,11 @@ SRCS = push_swap.c \
 	utils/stack.c \
 	utils/push.c \
 	utils/swap.c \
-	utils/print.c \
 	utils/rotate.c \
 	utils/reverse_rotate.c \
 	utils/sort.c \
 	src/index.c \
+	src/bytes.c \
 
 GREEN = \e[0;32m
 WHITE = \e[0;37m

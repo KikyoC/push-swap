@@ -6,14 +6,13 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 10:48:21 by togauthi          #+#    #+#             */
-/*   Updated: 2024/10/31 11:28:11 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/14 11:21:54 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-#include <stdio.h>
 
-int check_args(int argc, char **argv)
+int	check_args(int argc, char **argv)
 {
 	int		i;
 	char	*c;
@@ -32,4 +31,3 @@ int check_args(int argc, char **argv)
 	}
 	return (1);
 }
-

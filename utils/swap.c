@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:07:54 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/11 16:02:21 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/14 11:21:21 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	swap(t_stack *stack, char *to_print)
 {
 	t_element	*tmp;
 	t_element	*tmp_2;
-	
+
 	if (stack_len(stack) < 2)
 		return ;
 	tmp = stack->top;
