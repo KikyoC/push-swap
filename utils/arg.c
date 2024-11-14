@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 10:48:21 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/14 11:47:57 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/14 13:53:36 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ int	check_args(int argc, char **argv)
 			return (0);
 		}
 		free(c);
+		free(split[i]);
 		i++;
 	}
+	free(split);
 	return (1);
 }
