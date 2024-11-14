@@ -6,7 +6,7 @@
 #    By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/30 11:06:49 by togauthi          #+#    #+#              #
-#    Updated: 2024/11/14 11:16:23 by togauthi         ###   ########.fr        #
+#    Updated: 2024/11/14 13:28:26 by togauthi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,14 +26,18 @@ SRCS = push_swap.c \
 	src/index.c \
 	src/bytes.c \
 
+OBJ_DIRS = objs/ \
+	objs/utils \
+	objs/src
+
 GREEN = \e[0;32m
 WHITE = \e[0;37m
 AQUA = \e[0;36m
 YELLOW = \e[0;33m
 
-OBJS = $(SRCS:.c=.o)
+OBJS = $(addprefix objs/, $(SRCS:.c=.o))
 
-all: $(NAME)
+all: $(OBJ_DIRS) $(NAME)
 
 $(PRINTF):
 	@echo "$(YELLOW)Compiling printf... $(WHITE)[$(GREEN)1$(WHITE)/$(AQUA)3$(WHITE)]" 
@@ -49,8 +53,12 @@ $(NAME): $(PRINTF) $(LIBFT) $(OBJS)
 	@echo "$(YELLOW)Compiling push_swap... $(WHITE)[$(GREEN)3$(WHITE)/$(AQUA)3$(WHITE)]"
 	@cc $(CFLAGS) -o $@ $(OBJS) $(PRINTF) $(LIBFT)
 	@echo "$(GREEN)Done.${WHITE}"
-%.o: %.c
+
+objs/%.o: %.c
 	@cc $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIRS):
+	@mkdir $@
 
 clean:
 	@echo "$(YELLOW)Clearing printf... $(WHITE)[$(GREEN)1$(WHITE)/$(AQUA)3$(WHITE)]"
@@ -60,7 +68,7 @@ clean:
 	@make --no-print-directory -C libft clean
 	@rm -f $(LIBFT)
 	@echo "$(YELLOW)Clearing objects... $(WHITE)[$(GREEN)3$(WHITE)/$(AQUA)3$(WHITE)]"
-	@rm -f $(OBJS)
+	@rm -rf $(OBJ_DIRS)
 	@echo "$(GREEN)Done."
 
 fclean: clean
