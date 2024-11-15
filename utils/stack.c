@@ -6,12 +6,11 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 16:29:07 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/14 11:22:54 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/15 13:20:32 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-#include <stdio.h>
 
 void	put_stack_end(t_stack *stack, t_element *element)
 {
