@@ -6,7 +6,7 @@
 #    By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/30 11:06:49 by togauthi          #+#    #+#              #
-#    Updated: 2024/11/14 13:28:26 by togauthi         ###   ########.fr        #
+#    Updated: 2024/11/15 09:39:25 by togauthi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,10 @@ SRCS = push_swap.c \
 	utils/rotate.c \
 	utils/reverse_rotate.c \
 	utils/sort.c \
+	utils/rank.c \
 	src/index.c \
 	src/bytes.c \
+	src/little_sort.c \
 
 OBJ_DIRS = objs/ \
 	objs/utils \

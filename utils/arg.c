@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 10:48:21 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/14 13:53:36 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/15 10:44:33 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,22 @@ int	check_args(int argc, char **argv)
 {
 	int		i;
 	char	*c;
-	char	**split;
-	
+
 	if (argc < 2)
 		return (0);
 	if (!argv[1][0])
 		return (0);
-	i = 0;
-	split = ft_split(argv[1], ' ');
-	while (split[i])
+	i = 1;
+	while (i < argc)
 	{
-		c = ft_itoa(ft_atoi(split[i]));
-		if (ft_strncmp(c, split[i], ft_strlen(split[i])))
+		c = ft_itoa(ft_atoi(argv[i]));
+		if (ft_strncmp(c, argv[i], ft_strlen(argv[i])))
 		{
 			free(c);
 			return (0);
 		}
 		free(c);
-		free(split[i]);
 		i++;
 	}
-	free(split);
 	return (1);
 }

@@ -6,11 +6,25 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:08:26 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/14 11:19:02 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/15 10:43:30 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	include(t_stack *stack, int nbr)
+{
+	t_element	*current;
+
+	current = stack->top;
+	while (current)
+	{
+		if (current->nbr == nbr)
+			return (1);
+		current = current->next;
+	}
+	return (0);
+}
 
 t_stack	*create_stack(int argc, char **args)
 {
@@ -21,12 +35,14 @@ t_stack	*create_stack(int argc, char **args)
 	res = ft_calloc(sizeof(t_stack), 1);
 	if (!res)
 		return (NULL);
-	i = 1;
-	while (i < argc)
+	i = 0;
+	while (++i < argc)
 	{
 		element = ft_calloc(sizeof(t_element), 1);
-		if (!element)
+		if (!element || include(res, ft_atoi(args[i])))
 		{
+			if (element)
+				free(element);
 			free_stack(res);
 			return (NULL);
 		}
@@ -35,7 +51,6 @@ t_stack	*create_stack(int argc, char **args)
 		element->next = NULL;
 		element->index = 0;
 		put_stack_end(res, element);
-		i++;
 	}
 	return (res);
 }
@@ -46,14 +61,21 @@ int	main(int argc, char **argv)
 	t_stack	*stack_2;
 
 	if (!check_args(argc, argv))
+	{
+		write(2, "Error\n", 6);
 		return (1);
+	}
 	stack = create_stack(argc, argv);
 	if (!stack)
+	{
+		write(2, "Error\n", 6);
 		return (1);
+	}
 	stack_2 = ft_calloc(sizeof(t_stack), 1);
 	if (!stack_2)
 	{
 		free_stack(stack);
+		write(2, "Error\n", 6);
 		return (1);
 	}
 	sort(stack, stack_2);

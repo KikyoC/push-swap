@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:09:04 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/14 11:18:27 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/15 09:54:11 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,15 @@ void		put_stack_end(t_stack *stack, t_element *element);
 void		free_stack(t_stack *stack);
 void		push(t_stack *original, t_stack *to_push, char *to_print);
 void		rotate(t_stack *stack, char *to_print);
+void		swap(t_stack *stack, char *to_print);
+void		reverse_rotate(t_stack *stack, char *to_print);
 int			stack_len(t_stack *stack);
 t_element	*stack_last(t_stack *stack);
 int			is_sorted(t_stack *stack);
 void		sort(t_stack *main, t_stack *tmp);
 int			give_max_byte(t_stack *stack);
+int			current_rank(t_stack *stack, int nbr);
+int			lower(t_stack *stack);
+int			bigger(t_stack *stack);
+void		sort_five(t_stack *main, t_stack *tmp);
 #endif

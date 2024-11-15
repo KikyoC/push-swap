@@ -6,21 +6,11 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 11:11:40 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/14 11:19:57 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/15 10:55:09 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-int	ft_power(int nb, int power)
-{
-	if (power < 0)
-		return (0);
-	if (power == 0)
-		return (1);
-	else
-		return (nb * ft_power(nb, power - 1));
-}
 
 int	how_many_bytes(int i)
 {
