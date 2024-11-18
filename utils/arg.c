@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 10:48:21 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/15 10:44:33 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/15 13:22:44 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	check_args(int argc, char **argv)
 	char	*c;
 
 	if (argc < 2)
-		return (0);
+		return (1);
 	if (!argv[1][0])
 		return (0);
 	i = 1;

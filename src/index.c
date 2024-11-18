@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:27:41 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/15 10:44:18 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/15 13:24:22 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ void	radix(t_stack *main, t_stack *tmp)
 
 void	sort(t_stack *main, t_stack *tmp)
 {
+	if (stack_len(main) == 0)
+		return ;
 	set_index(main, stack_len(main));
 	if (stack_len(main) <= 5)
 		sort_five(main, tmp);
