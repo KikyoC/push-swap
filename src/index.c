@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:27:41 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/15 13:24:22 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/20 14:17:05 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	set_index(t_stack *stack, int size)
 		while (current)
 		{
 			if (current->nbr == -2147483648 && !current->index)
-				current->index = 1;
+				current->index = 0;
 			if (current->nbr > last && !current->index)
 			{
 				last = current->nbr;
