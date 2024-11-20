@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:08:26 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/20 13:05:43 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/20 13:06:39 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	include(t_stack *stack, int nbr)
 	}
 	return (0);
 }
+
 int	create_elements(t_stack *stack, char **str)
 {
 	int			i;

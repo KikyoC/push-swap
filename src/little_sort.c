@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 09:28:02 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/18 13:19:00 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/20 13:06:50 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	sort_three(t_stack *main)
 void	sort_five(t_stack *main, t_stack *tmp)
 {
 	int	low;
-	
+
 	if (is_sorted(main))
 		return ;
 	while (stack_len(main) > 3)
