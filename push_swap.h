@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:09:04 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/15 09:54:11 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/11/20 12:50:09 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,5 @@ int			current_rank(t_stack *stack, int nbr);
 int			lower(t_stack *stack);
 int			bigger(t_stack *stack);
 void		sort_five(t_stack *main, t_stack *tmp);
+void		free_split(char **str);
 #endif
