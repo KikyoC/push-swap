@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:08:26 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/20 14:17:31 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/12/09 14:49:09 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,18 @@ t_stack	*create_stack(int argc, char **args)
 	return (res);
 }
 
+void print_stack(t_stack *stack)
+{
+	t_element	*current;
+	
+	current = stack->top;
+	while (current)
+	{
+		ft_printf("Current: %d, Index: %d\n", current->nbr, current->index);
+		current = current->next;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*stack;
@@ -95,6 +107,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	sort(stack, stack_2);
+	print_stack(stack);
 	free_stack(stack);
 	free_stack(stack_2);
 }

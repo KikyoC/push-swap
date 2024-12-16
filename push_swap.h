@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:09:04 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/20 12:50:09 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/12/06 11:14:15 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ typedef struct s_element
 	struct s_element	*next;
 	struct s_element	*prev;
 }	t_element;
+
+// 5 4 300
 
 typedef struct s_stack
 {

@@ -6,7 +6,7 @@
 /*   By: togauthi <togauthi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:27:41 by togauthi          #+#    #+#             */
-/*   Updated: 2024/11/20 14:17:05 by togauthi         ###   ########.fr       */
+/*   Updated: 2024/12/09 14:58:27 by togauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,19 @@ void	radix_tmp_sort(t_stack *main, t_stack *tmp, int bits, int actual)
 			push(tmp, main, "pa");
 }
 
+void	push_a(t_stack *main, t_stack *tmp)
+{
+	t_element *current;
+
+	current = tmp->top;
+	while (current)
+	{
+		push(tmp, main, "pa");
+		current = tmp->top;
+	}
+}
+
+
 void	radix(t_stack *main, t_stack *tmp)
 {
 	int			bits;
@@ -75,7 +88,9 @@ void	radix(t_stack *main, t_stack *tmp)
 			else
 				push(main, tmp, "pb");
 		}
+		// On push tout sur A
 		radix_tmp_sort(main, tmp, bits, actual + 1);
+		// push_a(main, tmp);
 		actual ++;
 	}
 }
